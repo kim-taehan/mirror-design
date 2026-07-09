@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "mirror-design",
+  "description": "Your existing screens are the design system. Build new screens from proven pieces of your own codebase.",
+  "owner": {
+    "name": "Taehan Kim",
+    "url": "https://github.com/kim-taehan"
+  },
+  "plugins": [
+    {
+      "name": "mirror-design",
+      "description": "Plans and builds new frontend screens by mirroring what the codebase already has — element-wise references with file:line provenance, measured style values only, human review gate before implementation.",
+      "source": "./",
+      "category": "productivity",
+      "keywords": ["frontend", "design-system", "ui-consistency", "mockup", "screen-planning"]
+    }
+  ]
+}

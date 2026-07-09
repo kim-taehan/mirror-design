@@ -1,0 +1,13 @@
+{
+  "name": "mirror-design",
+  "version": "0.2.0",
+  "description": "No designer? Your existing screens are the design system. Plans and builds new screens by assembling grep-verified pieces of the ones you already have — with a human review gate before any code.",
+  "author": {
+    "name": "Taehan Kim",
+    "url": "https://github.com/kim-taehan"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/kim-taehan/mirror-design",
+  "repository": "https://github.com/kim-taehan/mirror-design",
+  "keywords": ["frontend", "design-system", "ui-consistency", "mockup", "screen-planning"]
+}
