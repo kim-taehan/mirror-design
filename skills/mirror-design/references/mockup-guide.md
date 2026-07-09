@@ -22,6 +22,7 @@ Corollaries:
 - In revision rounds, elements **changed** since the last reviewed version: a `CHANGED` badge (visually distinct from `NEW`).
 - In audit mockups, elements **deviating** from the census: a `DRIFT` badge (visually distinct from both — audit only).
 - Badge styling is the one place invented style is allowed — it's annotation, not design. Keep it obviously an annotation (e.g. small colored tag that no real screen uses).
+- **Badges must be layout-neutral.** Render them as absolutely-positioned overlays (relative anchor on the flagged element, absolute tag at its corner, `pointer-events: none`) — never as inline elements. An inline badge consumes real space, shifts spacing, and wraps neighbors, so the mockup no longer reproduces the screen it claims to show: the annotation falsifies the evidence.
 
 ## File locations
 

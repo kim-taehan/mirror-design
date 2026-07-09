@@ -81,6 +81,10 @@ The plan package, before any code:
 - **Not a creative design tool.** If your codebase has no precedent for an element, mirror-design won't improvise one — it stops and asks. If your existing screens are ugly, mirror-design will faithfully build you another ugly screen. Consistency is the product.
 - Planning and implementation are always separated by a human gate. That gate is the point.
 
+## Acknowledgements
+
+Command structure and audit methodology (severity tiers, false-positive filter, judge-only-by-default) were inspired by [interface-design](https://github.com/Dammyjay93/interface-design) by Dammyjay93 — a craft-first design skill that sits on the opposite side of the philosophy: it designs from trained principles, mirror-design reproduces from measured evidence. No code or text was copied; the structural ideas were adapted to an evidence-only judging standard.
+
 ## License
 
 MIT
