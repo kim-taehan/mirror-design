@@ -2,6 +2,10 @@
 
 **English** · [한국어](README.ko.md)
 
+<p align="center">
+  <img src="assets/mascot.svg" alt="mirror-design — a grayscale parrot that invents nothing and only repeats file:line" width="360">
+</p>
+
 **No designer? Your existing screens ARE the design system.**
 
 mirror-design is a [Claude Code](https://claude.com/claude-code) skill that plans and implements new frontend screens by *mirroring what your codebase already has* — instead of letting the model invent plausible-looking UI that matches nothing.
