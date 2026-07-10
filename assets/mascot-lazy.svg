@@ -2,8 +2,8 @@
   <style>
     :root{color-scheme:light dark;}
     .ink{fill:#1e293b;} .stroke-ink{stroke:#1e293b;}
-    .skin{fill:#cbd5e1;} .skinD{fill:#b3bccb;}
-    .hair{fill:#334155;}
+    .skin{fill:#eac59e;} .skinD{fill:#d8ac81;}
+    .hair{fill:#41372e;}
     .hoodie{fill:#94a3b8;} .hoodieD{fill:#6b7686;}
     .leg{fill:#64748b;} .legD{fill:#4b5563;}
     .cushion{fill:#d1d8e2;} .cushionD{fill:#b6bfcc;}
@@ -17,8 +17,8 @@
     .shine{stroke:#ffffff;opacity:.5;}
     @media (prefers-color-scheme:dark){
       .ink{fill:#e2e8f0;} .stroke-ink{stroke:#e2e8f0;}
-      .skin{fill:#8f9bad;} .skinD{fill:#7d899b;}
-      .hair{fill:#1e2530;}
+      .skin{fill:#c99b74;} .skinD{fill:#b3835f;}
+      .hair{fill:#2a241d;}
       .hoodie{fill:#5b6472;} .hoodieD{fill:#454d5b;}
       .leg{fill:#3f4757;} .legD{fill:#2f3541;}
       .cushion{fill:#3a4150;} .cushionD{fill:#2c323e;}
