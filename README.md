@@ -3,7 +3,7 @@
 **English** · [한국어](README.ko.md)
 
 <p align="center">
-  <img src="assets/mascot.svg" alt="mirror-design — a grayscale parrot that invents nothing and only repeats file:line" width="360">
+  <img src="assets/mascot.svg" alt="mirror-design — a lazy developer who copies your existing UI from a mirror (Ctrl+C) and pastes it onto the screen (Ctrl+V)" width="440">
 </p>
 
 <p align="center">

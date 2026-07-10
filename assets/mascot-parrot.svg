@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" width="720" height="520" role="img" aria-label="mirror-design mascot: a grayscale parrot that only repeats file:line">
+  <style>
+    :root { color-scheme: light dark; }
+    .ink   { fill: #0f172a; }
+    .body  { fill: #94a3b8; }
+    .shade { fill: #64748b; }
+    .light { fill: #cbd5e1; }
+    .echo  { fill: #94a3b8; opacity: .18; }
+    .beak  { fill: #d0a45c; }      /* the one spot of color — a beak, so it still reads as a parrot */
+    .beakS { fill: #b98a45; }
+    .paper { fill: #ffffff; stroke: #cbd5e1; }
+    .txt   { fill: #0f172a; }
+    .muted { fill: #64748b; }
+    .glint { fill: #ffffff; }
+    .chipBg{ fill: #0f172a; }
+    .chipTx{ fill: #ffffff; }
+    .cap   { fill: #f1f5f9; stroke: #cbd5e1; }
+    .capTx { fill: #0f172a; }
+    @media (prefers-color-scheme: dark) {
+      .ink   { fill: #e2e8f0; }
+      .body  { fill: #64748b; }
+      .shade { fill: #475569; }
+      .light { fill: #94a3b8; }
+      .echo  { fill: #64748b; opacity: .22; }
+      .paper { fill: #1e293b; stroke: #334155; }
+      .txt   { fill: #e2e8f0; }
+      .muted { fill: #94a3b8; }
+      .glint { fill: #e2e8f0; }
+      .chipBg{ fill: #e2e8f0; }
+      .chipTx{ fill: #0f172a; }
+    }
+  </style>
+
+  <!-- echo: the "repeat / reflection" — a faint offset duplicate of the head -->
+  <g transform="translate(34 26)">
+    <circle class="echo" cx="270" cy="230" r="132"/>
+    <path class="echo" d="M300 300 q60 34 40 118 q-8 30 -46 30 q22 -18 18 -66 q-4 -44 -12 -82 Z"/>
+  </g>
+
+  <!-- tail feathers -->
+  <path class="shade" d="M300 320 q34 44 18 150 q-6 26 -34 24 q16 -20 12 -78 q-4 -50 4 -96 Z"/>
+  <path class="body"  d="M320 320 q40 40 30 148 q-4 26 -30 22 q14 -22 8 -74 q-6 -66 -8 -118 Z"/>
+
+  <!-- body -->
+  <path class="body" d="M232 236 q30 -70 108 -56 q84 16 78 118 q-6 96 -96 104 q-96 8 -110 -78 q-8 -50 20 -88 Z"/>
+  <!-- wing -->
+  <path class="shade" d="M330 250 q64 8 62 84 q-2 60 -58 74 q34 -34 30 -84 q-4 -50 -34 -74 Z"/>
+
+  <!-- perch -->
+  <rect class="ink" x="150" y="452" width="300" height="16" rx="8"/>
+  <!-- feet -->
+  <path class="beakS" d="M300 452 v-40 M300 452 l-14 -8 M300 452 l14 -8" stroke="#b98a45" stroke-width="7" fill="none" stroke-linecap="round"/>
+
+  <!-- head -->
+  <circle class="body" cx="270" cy="212" r="132"/>
+  <!-- crest feathers -->
+  <path class="light" d="M214 108 q-14 -46 10 -66 q6 26 22 44 q-18 6 -32 22 Z"/>
+  <path class="light" d="M250 92  q-4 -50 24 -64 q0 28 12 50 q-20 2 -36 14 Z"/>
+  <!-- cheek patch -->
+  <circle class="light" cx="326" cy="250" r="30"/>
+  <!-- eye -->
+  <circle class="ink" cx="286" cy="196" r="30"/>
+  <circle class="body" cx="286" cy="196" r="30" opacity="0" />
+  <!-- mirror-split glint: two half highlights = a tiny reflection -->
+  <path class="glint" d="M280 184 a12 12 0 0 1 0 24 Z"/>
+  <circle class="glint" cx="296" cy="188" r="4"/>
+
+  <!-- hooked parrot beak (the single color accent) -->
+  <path class="beak"  d="M372 176 c56 -10 96 18 92 44 c-3 26 -40 40 -78 36 c30 -12 34 -34 22 -48 c-12 -14 -34 -18 -38 -32 Z"/>
+  <path class="beakS" d="M386 214 c22 4 40 0 50 -12 c-6 22 -34 34 -60 30 c6 -6 10 -12 10 -18 Z"/>
+
+  <!-- speech bubble: it only ever says file:line -->
+  <g transform="translate(486 150)">
+    <rect class="paper" x="0" y="0" width="214" height="86" rx="16" stroke-width="2"/>
+    <path class="paper" d="M18 60 l-30 26 l40 -8 Z" stroke-width="2"/>
+    <text x="24" y="42" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="30" font-weight="700" class="txt">file<tspan class="muted">:</tspan>line</text>
+    <text x="24" y="68" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" class="muted">…again.</text>
+  </g>
+
+  <!-- creativity chip -->
+  <g transform="translate(150 486)">
+    <rect class="chipBg" x="0" y="0" width="176" height="30" rx="15"/>
+    <text x="88" y="20" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" font-weight="700" class="chipTx" letter-spacing="1">CREATIVITY&#160;0</text>
+  </g>
+</svg>

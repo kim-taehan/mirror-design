@@ -3,7 +3,7 @@
 [English](README.md) · **한국어**
 
 <p align="center">
-  <img src="assets/mascot.svg" alt="mirror-design — 아무것도 발명하지 않고 file:line만 되뇌는 회색 앵무새" width="360">
+  <img src="assets/mascot.svg" alt="mirror-design — 거울에 비친 기존 UI를 Ctrl+C 해서 화면에 Ctrl+V 하는 게으른 개발자" width="440">
 </p>
 
 <p align="center">
