@@ -1,5 +1,7 @@
 # mirror-design 🪞
 
+**English** · [한국어](README.ko.md)
+
 **No designer? Your existing screens ARE the design system.**
 
 mirror-design is a [Claude Code](https://claude.com/claude-code) skill that plans and implements new frontend screens by *mirroring what your codebase already has* — instead of letting the model invent plausible-looking UI that matches nothing.
