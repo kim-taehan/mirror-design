@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" width="800" height="440" role="img" aria-label="mirror-design: a UI screen and its mirror reflection — the new screen is a reflection of the one you already have">
+  <style>
+    :root{color-scheme:light dark;}
+    .win{fill:#f3f5f8;stroke:#d3d9e2;stroke-width:2;}
+    .hdr{fill:#e4e9ef;}
+    .dot{fill:#c4ccd7;}
+    .bar{fill:#aeb7c4;}
+    .barT{fill:#8892a0;}
+    .barHi{fill:#6b7482;}
+    .mline{stroke:#c4ccd7;}
+    .spark{fill:#8892a0;}
+    .gleam{fill:#ffffff;}
+    .cap{fill:#8892a0;}
+    .shadow{fill:#0f172a;opacity:.06;}
+    @media (prefers-color-scheme:dark){
+      .win{fill:#1a212b;stroke:#333c48;}
+      .hdr{fill:#28303a;}
+      .dot{fill:#465061;}
+      .bar{fill:#586472;}
+      .barT{fill:#7b8695;}
+      .barHi{fill:#95a0b1;}
+      .mline{stroke:#3a4450;}
+      .spark{fill:#95a0b1;}
+      .gleam{fill:#c9d3e6;}
+      .cap{fill:#7b8695;}
+      .shadow{fill:#000;opacity:.24;}
+    }
+  </style>
+
+  <defs>
+    <g id="screen">
+      <rect class="win" x="96" y="96" width="252" height="248" rx="18"/>
+      <path class="hdr" d="M96 114 a18 18 0 0 1 18 -18 h216 a18 18 0 0 1 18 18 v24 H96 Z"/>
+      <circle class="dot" cx="120" cy="120" r="5"/>
+      <circle class="dot" cx="138" cy="120" r="5"/>
+      <circle class="dot" cx="156" cy="120" r="5"/>
+      <rect class="barT" x="120" y="170" width="112" height="15" rx="7.5"/>
+      <rect class="bar"  x="120" y="204" width="204" height="13" rx="6.5"/>
+      <rect class="bar"  x="120" y="232" width="168" height="13" rx="6.5"/>
+      <rect class="barHi" x="120" y="262" width="204" height="19" rx="9.5"/>
+      <rect class="bar"  x="120" y="298" width="150" height="13" rx="6.5"/>
+    </g>
+    <linearGradient id="mg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"  stop-color="currentColor" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="currentColor" stop-opacity="1"/>
+      <stop offset="1"  stop-color="currentColor" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ground shadows -->
+  <ellipse class="shadow" cx="222" cy="360" rx="120" ry="14"/>
+  <ellipse class="shadow" cx="578" cy="360" rx="120" ry="14"/>
+
+  <!-- existing screen (the source) -->
+  <use href="#screen"/>
+
+  <!-- mirror reflection (the new screen mirror-design builds) -->
+  <g opacity="0.62">
+    <use href="#screen" transform="translate(800,0) scale(-1,1)"/>
+  </g>
+  <!-- reflection gleam -->
+  <path class="gleam" d="M486 96 h58 l-92 248 h-58 Z" opacity="0.10"/>
+
+  <!-- mirror plane -->
+  <g class="mline">
+    <line x1="400" y1="84" x2="400" y2="356" stroke-width="2.5" stroke-dasharray="2 9" stroke-linecap="round"/>
+  </g>
+  <!-- sparkle on the mirror -->
+  <g class="spark" transform="translate(400 220)">
+    <path d="M0 -16 Q2 -2 16 0 Q2 2 0 16 Q-2 2 -16 0 Q-2 -2 0 -16 Z"/>
+  </g>
+
+  <!-- caption -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" font-weight="600" class="cap" letter-spacing="1" text-anchor="middle">
+    <text x="222" y="404">YOUR SCREEN</text>
+    <text x="578" y="404">ITS REFLECTION</text>
+  </g>
+</svg>

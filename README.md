@@ -3,7 +3,7 @@
 **English** · [한국어](README.ko.md)
 
 <p align="center">
-  <img src="assets/mascot-lazy-v2.svg" alt="mirror-design — a lazy developer who copies your existing UI from a mirror (Ctrl+C) and pastes it onto the screen (Ctrl+V)" width="440">
+  <img src="assets/hero.svg" alt="mirror-design — a UI screen and its mirror reflection: the new screen is a reflection of the one you already have" width="620">
 </p>
 
 <p align="center">
