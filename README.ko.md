@@ -3,7 +3,7 @@
 [English](README.md) · **한국어**
 
 <p align="center">
-  <img src="assets/mascot-dev.svg" alt="mirror-design — 거울에 비친 기존 UI를 Ctrl+C 해서 화면에 Ctrl+V 하는 게으른 개발자" width="440">
+  <img src="assets/mascot-lazydev.svg" alt="mirror-design — 거울에 비친 기존 UI를 Ctrl+C 해서 화면에 Ctrl+V 하는 게으른 개발자" width="440">
 </p>
 
 <p align="center">
