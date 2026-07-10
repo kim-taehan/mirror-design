@@ -58,11 +58,13 @@
   <!-- head, resting back -->
   <circle class="skin" cx="238" cy="256" r="58"/>
   <circle class="skinD" cx="214" cy="262" r="10"/>
-  <path class="hair" d="M184 258 q-14 -70 58 -76 q56 -4 62 40 q2 14 -6 22 q-6 -34 -46 -36 q-16 12 -20 2 q-8 20 -30 22 q-12 2 -18 26 q-4 -14 0 -22 Z"/>
-  <g class="stroke-ink" fill="none" stroke-width="4" stroke-linecap="round">
-    <circle cx="248" cy="248" r="14"/>
-    <circle cx="290" cy="244" r="14"/>
-    <path d="M262 247 h14"/>
+  <!-- hair: receding M-shaped hairline -->
+  <path class="hair" d="M182 266 C168 210 198 186 236 188 C258 189 274 196 282 212 C277 205 265 205 259 214 C253 203 243 203 240 216 C234 205 220 205 214 218 C206 227 198 233 192 245 C188 253 184 259 182 266 Z"/>
+  <!-- black horn-rimmed glasses -->
+  <g class="stroke-ink" fill="none" stroke-width="7" stroke-linecap="round">
+    <circle cx="248" cy="249" r="15"/>
+    <circle cx="291" cy="245" r="15"/>
+    <path d="M263 248 h13"/>
   </g>
   <path class="ink" d="M242 250 q6 5 12 0"/>
   <path class="ink" d="M284 246 q6 5 12 0"/>
