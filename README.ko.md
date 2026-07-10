@@ -6,6 +6,11 @@
   <img src="assets/mascot.svg" alt="mirror-design — 아무것도 발명하지 않고 file:line만 되뇌는 회색 앵무새" width="360">
 </p>
 
+<p align="center">
+  <a href="https://kim-taehan.github.io/mirror-design/"><b>▶ 결과물 보기 — 라이브 케이스 파일</b></a><br>
+  <sub>실제 코드베이스에서 발명 요소 0으로 조립한 프로덕션급 화면 2종 + 감사(audit)</sub>
+</p>
+
 **디자이너가 없나요? 여러분의 기존 화면이 곧 디자인 시스템입니다.**
 
 mirror-design은 새 프론트엔드 화면을 *코드베이스에 이미 있는 것을 그대로 비추어* 계획하고 구현하는 [Claude Code](https://claude.com/claude-code) 스킬입니다 — 모델이 아무것과도 맞지 않는 그럴듯한 UI를 지어내게 두는 대신에요.

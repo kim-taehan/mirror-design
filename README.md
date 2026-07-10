@@ -6,6 +6,11 @@
   <img src="assets/mascot.svg" alt="mirror-design — a grayscale parrot that invents nothing and only repeats file:line" width="360">
 </p>
 
+<p align="center">
+  <a href="https://kim-taehan.github.io/mirror-design/"><b>▶ See what it built — live case file</b></a><br>
+  <sub>two production-looking screens + an audit, assembled from a real codebase with 0 invented pixels</sub>
+</p>
+
 **No designer? Your existing screens ARE the design system.**
 
 mirror-design is a [Claude Code](https://claude.com/claude-code) skill that plans and implements new frontend screens by *mirroring what your codebase already has* — instead of letting the model invent plausible-looking UI that matches nothing.

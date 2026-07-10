@@ -1,0 +1,350 @@
+<title>mirror-design · case file: atworks-renew-ui</title>
+<style>
+  :root{
+    --bg:#eceef1; --surface:#ffffff; --surface-2:#f5f6f8;
+    --ink:#1b2230; --muted:#586274; --faint:#8b94a3;
+    --line:rgba(27,34,48,.11); --line-strong:rgba(27,34,48,.20);
+    --accent:#6d4bff; --accent-soft:rgba(109,75,255,.10); --accent-line:rgba(109,75,255,.32);
+    --ok:#0e9f6e; --warn:#c27803; --bad:#e02424;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0b0e13; --surface:#141a23; --surface-2:#0f151d;
+      --ink:#e7ebf2; --muted:#98a3b5; --faint:#606b7d;
+      --line:rgba(255,255,255,.09); --line-strong:rgba(255,255,255,.16);
+      --accent:#9d84ff; --accent-soft:rgba(157,132,255,.13); --accent-line:rgba(157,132,255,.34);
+      --ok:#3ddc97; --warn:#e0a83e; --bad:#ff6b6b;
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#eceef1; --surface:#ffffff; --surface-2:#f5f6f8;
+    --ink:#1b2230; --muted:#586274; --faint:#8b94a3;
+    --line:rgba(27,34,48,.11); --line-strong:rgba(27,34,48,.20);
+    --accent:#6d4bff; --accent-soft:rgba(109,75,255,.10); --accent-line:rgba(109,75,255,.32);
+    --ok:#0e9f6e; --warn:#c27803; --bad:#e02424;
+  }
+  :root[data-theme="dark"]{
+    --bg:#0b0e13; --surface:#141a23; --surface-2:#0f151d;
+    --ink:#e7ebf2; --muted:#98a3b5; --faint:#606b7d;
+    --line:rgba(255,255,255,.09); --line-strong:rgba(255,255,255,.16);
+    --accent:#9d84ff; --accent-soft:rgba(157,132,255,.13); --accent-line:rgba(157,132,255,.34);
+    --ok:#3ddc97; --warn:#e0a83e; --bad:#ff6b6b;
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--sans); font-size:16px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+  a{color:inherit;}
+
+  /* ── masthead ── */
+  .mast{display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:22px 0; border-bottom:1px solid var(--line);}
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand img{width:40px; height:40px; display:block;}
+  .brand b{font-size:16px; font-weight:700; letter-spacing:-.01em;}
+  .brand .dot{color:var(--accent);}
+  .mast .meta{font-family:var(--mono); font-size:12px; color:var(--faint);}
+
+  /* ── hero ── */
+  .hero{padding:66px 0 40px;}
+  .eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--accent); display:inline-flex; align-items:center; gap:8px;}
+  .eyebrow::before{content:""; width:22px; height:1px; background:var(--accent-line);}
+  h1{font-size:clamp(38px,6.4vw,68px); line-height:1.02; letter-spacing:-.035em; font-weight:800;
+    margin:20px 0 0; text-wrap:balance;}
+  h1 .zero{position:relative; color:var(--accent); font-family:var(--mono); letter-spacing:-.04em;}
+  h1 .zero::after{content:"0"; position:absolute; left:.09em; top:.055em; color:var(--accent);
+    opacity:.16; z-index:-1;}                 /* the echo: a faint offset duplicate */
+  .lead{max-width:60ch; margin:22px 0 0; color:var(--muted); font-size:18px;}
+  .lead code{font-family:var(--mono); font-size:.86em; color:var(--ink);
+    background:var(--accent-soft); padding:1px 6px; border-radius:5px;}
+
+  /* stat rail */
+  .stats{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin:40px 0 0;
+    background:var(--line); border:1px solid var(--line); border-radius:12px; overflow:hidden;}
+  .stat{background:var(--surface); padding:20px 22px;}
+  .stat .n{font-family:var(--mono); font-size:32px; font-weight:700; letter-spacing:-.03em;
+    font-variant-numeric:tabular-nums; display:flex; align-items:baseline; gap:4px;}
+  .stat .n.accent{color:var(--accent);}
+  .stat .k{font-size:13px; color:var(--muted); margin-top:4px;}
+
+  /* evidence ticker */
+  .evidence{margin:30px 0 0; border:1px dashed var(--accent-line); border-radius:12px;
+    background:var(--accent-soft); padding:16px 18px;}
+  .evidence .cap{font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--accent); margin-bottom:10px;}
+  .chips{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{font-family:var(--mono); font-size:12.5px; color:var(--ink); background:var(--surface);
+    border:1px solid var(--line); border-radius:6px; padding:4px 9px; white-space:nowrap;
+    font-variant-numeric:tabular-nums;}
+  .chip .f{color:var(--muted);}
+
+  /* ── exhibit ── */
+  .exhibit{padding:56px 0 0;}
+  .ex-head{display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin-bottom:18px;}
+  .ex-no{font-family:var(--mono); font-size:13px; color:var(--accent); font-weight:700;
+    letter-spacing:.05em;}
+  .ex-head h2{font-size:24px; letter-spacing:-.02em; margin:0; font-weight:750;}
+  .ex-head .src{font-family:var(--mono); font-size:12.5px; color:var(--muted);}
+  .ex-head .src b{color:var(--ink); font-weight:600;}
+
+  .shot{border:1px solid var(--line-strong); border-radius:14px; overflow:hidden;
+    background:var(--surface); box-shadow:0 1px 2px rgba(0,0,0,.04), 0 12px 32px -14px rgba(0,0,0,.22);}
+  .shot .bar{display:flex; align-items:center; gap:7px; padding:11px 14px; border-bottom:1px solid var(--line);
+    background:var(--surface-2);}
+  .shot .bar i{width:11px; height:11px; border-radius:50%; background:var(--line-strong); display:block;}
+  .shot .bar span{font-family:var(--mono); font-size:11.5px; color:var(--faint); margin-left:8px;}
+  .shot img{display:block; width:100%; height:auto;}
+
+  /* ledger */
+  .ledger{margin:22px 0 0; border:1px solid var(--line); border-radius:12px; overflow:hidden;}
+  .ledger .lh{font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--muted); padding:12px 18px; background:var(--surface-2); border-bottom:1px solid var(--line);
+    display:flex; justify-content:space-between;}
+  .lscroll{overflow-x:auto;}
+  table{width:100%; border-collapse:collapse; font-size:14px; min-width:560px;}
+  th,td{text-align:left; padding:11px 18px; border-bottom:1px solid var(--line); vertical-align:top;}
+  thead th{font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--faint);
+    font-weight:600; background:var(--surface);}
+  tbody tr:last-child td{border-bottom:none;}
+  td.el{font-weight:600; white-space:nowrap;}
+  td.pat{color:var(--muted);}
+  td.src{white-space:nowrap;}
+  .ref{font-family:var(--mono); font-size:12.5px; color:var(--accent); background:var(--accent-soft);
+    border:1px solid var(--accent-line); border-radius:6px; padding:2px 7px; font-variant-numeric:tabular-nums;}
+
+  /* ── audit movement ── */
+  .turn{padding:70px 0 0;}
+  .turn .eyebrow{color:var(--muted);}
+  .turn .eyebrow::before{background:var(--line-strong);}
+  .turn h2{font-size:clamp(26px,4vw,38px); letter-spacing:-.03em; font-weight:800; margin:16px 0 0; text-wrap:balance;}
+  .turn .lead{max-width:58ch; color:var(--muted); font-size:17px; margin:16px 0 0;}
+  .verdict-row{display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin:26px 0 18px;}
+  .verdict{display:inline-flex; align-items:center; gap:9px; font-family:var(--mono); font-size:13px;
+    font-weight:700; padding:8px 14px; border-radius:9px; letter-spacing:.02em;}
+  .verdict::before{content:""; width:8px; height:8px; border-radius:50%;}
+  .verdict.fail{background:rgba(224,36,36,.10); color:var(--bad); border:1px solid rgba(224,36,36,.32);}
+  .verdict.fail::before{background:var(--bad);}
+  .verdict-row .note{font-family:var(--mono); font-size:12px; color:var(--faint);}
+  .sev{font-family:var(--mono); font-size:11px; font-weight:700; padding:2px 8px; border-radius:999px;
+    letter-spacing:.03em; white-space:nowrap;}
+  .sev.blocker{background:var(--bad); color:#fff;}
+  .sev.should{background:rgba(194,120,3,.15); color:var(--warn); border:1px solid rgba(194,120,3,.3);}
+  .sev.note{background:var(--surface-2); color:var(--muted); border:1px solid var(--line);}
+  td.sevcol{white-space:nowrap; text-align:right;}
+  .ratified{margin:16px 0 0; font-size:13.5px; color:var(--muted); font-family:var(--mono); line-height:1.7;}
+  .ratified b{color:var(--ink);}
+  .ratified .ok{color:var(--ok);}
+
+  /* ── gates ── */
+  .gates{padding:64px 0 0;}
+  .gates h2{font-size:22px; letter-spacing:-.02em; margin:0 0 6px;}
+  .gates .sub{color:var(--muted); margin:0 0 26px; max-width:62ch;}
+  .gcards{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .gcard{border:1px solid var(--line); border-radius:12px; padding:20px 22px; background:var(--surface);}
+  .gcard .t{font-family:var(--mono); font-size:12px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--accent); display:flex; align-items:center; gap:8px;}
+  .gcard .t::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--accent);}
+  .gcard h3{font-size:17px; margin:11px 0 8px; letter-spacing:-.01em;}
+  .gcard p{margin:0; color:var(--muted); font-size:14.5px;}
+
+  /* ── footer ── */
+  footer{margin-top:64px; border-top:1px solid var(--line); padding:30px 0 60px;
+    display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;}
+  footer .l{font-family:var(--mono); font-size:12.5px; color:var(--faint);}
+  footer .l b{color:var(--ink);}
+  footer a.repo{font-family:var(--mono); font-size:13px; color:var(--accent); text-decoration:none;
+    border:1px solid var(--accent-line); border-radius:8px; padding:8px 14px;}
+
+  @media (max-width:760px){
+    .stats{grid-template-columns:1fr;}
+    .gcards{grid-template-columns:1fr;}
+    h1{font-size:40px;}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .reveal{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
+    .reveal.in{opacity:1; transform:none;}
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="mast">
+    <div class="brand">
+      <img src="../assets/mascot.svg" alt="mirror-design mascot">
+      <b>mirror<span class="dot">·</span>design</b>
+    </div>
+    <div class="meta">case&nbsp;file — atworks-renew-ui @ 7b6616f</div>
+  </header>
+
+  <section class="hero">
+    <span class="eyebrow">what it produced</span>
+    <h1>Two shipped-looking screens.<br><span class="zero">0</span> invented pixels.</h1>
+    <p class="lead">Given only “배포 이력 (deployment logs) — list + detail,” mirror-design surveyed the existing codebase and assembled both screens out of patterns it already found. Every color, size, and control traces to a real <code>file:line</code>. Nothing was designed — it was <em>cited</em>.</p>
+
+    <div class="stats">
+      <div class="stat"><div class="n">2</div><div class="k">screens planned — list &amp; detail</div></div>
+      <div class="stat"><div class="n">17</div><div class="k">elements mapped to a source line</div></div>
+      <div class="stat"><div class="n accent">0</div><div class="k">values invented off-source</div></div>
+    </div>
+
+    <div class="evidence">
+      <div class="cap">sources it mirrored</div>
+      <div class="chips">
+        <span class="chip">ApiLogs/index.tsx<span class="f">:65-66</span></span>
+        <span class="chip">ApiLogSearch.tsx<span class="f">:26-29</span></span>
+        <span class="chip">ApiLogList.tsx<span class="f">:48-52</span></span>
+        <span class="chip">ApiLogList.tsx<span class="f">:141-180</span></span>
+        <span class="chip">ApiLogDetailContent.tsx<span class="f">:178-237</span></span>
+        <span class="chip">table.tsx<span class="f">:12</span></span>
+        <span class="chip">card.tsx<span class="f">:12</span></span>
+        <span class="chip">badge.tsx<span class="f">:6</span></span>
+        <span class="chip">button.tsx<span class="f">:8,14</span></span>
+        <span class="chip">input.tsx<span class="f">:14</span></span>
+        <span class="chip">select.tsx<span class="f">:22</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXHIBIT 01 -->
+  <section class="exhibit reveal">
+    <div class="ex-head">
+      <span class="ex-no">EXHIBIT 01</span>
+      <h2>Deployment logs — list</h2>
+      <span class="src">skeleton mirrored from <b>ApiLogs</b></span>
+    </div>
+    <div class="shot">
+      <div class="bar"><i></i><i></i><i></i><span>/deployment-logs · mockup drawn only from measured values</span></div>
+      <img src="img/deployment-logs-list.png" alt="Generated deployment-logs list screen: sidebar, header, filter card, data table, footer pager — all matching the existing app">
+    </div>
+    <div class="ledger">
+      <div class="lh"><span>element</span><span>← its source in your code</span></div>
+      <div class="lscroll">
+      <table>
+        <thead><tr><th>Element</th><th>Reused pattern</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td class="el">Page skeleton</td><td class="pat">container · h1 text-2xl semibold neutral-700</td><td class="src"><span class="ref">ApiLogs/index.tsx:65-66</span></td></tr>
+          <tr><td class="el">Search card</td><td class="pat">rounded-xl border, shadow-sm, p-4</td><td class="src"><span class="ref">card.tsx:12</span></td></tr>
+          <tr><td class="el">Filter grid</td><td class="pat">form space-y-4 · grid lg:grid-cols-4</td><td class="src"><span class="ref">ApiLogSearch.tsx:26-27</span></td></tr>
+          <tr><td class="el">Date / text inputs</td><td class="pat">h-9 rounded-md border input</td><td class="src"><span class="ref">input.tsx:14</span></td></tr>
+          <tr><td class="el">Status select</td><td class="pat">h-10 select + ChevronDown</td><td class="src"><span class="ref">select.tsx:22</span></td></tr>
+          <tr><td class="el">Search / reset</td><td class="pat">default h-10 · outline sm h-8</td><td class="src"><span class="ref">button.tsx:8,14</span></td></tr>
+          <tr><td class="el">Table &amp; header</td><td class="pat">w-full text-sm · th text-xs override</td><td class="src"><span class="ref">table.tsx:12 · ApiLogList.tsx:48-52</span></td></tr>
+          <tr><td class="el">Status badge</td><td class="pat">rounded-full · success / danger / warning</td><td class="src"><span class="ref">badge.tsx:6</span></td></tr>
+          <tr><td class="el">Server pill</td><td class="pat">px-2 py-1 rounded bg-neutral-100</td><td class="src"><span class="ref">ApiLogList.tsx:95</span></td></tr>
+          <tr><td class="el">Footer pager</td><td class="pat">size select · prev / n·m / next</td><td class="src"><span class="ref">ApiLogList.tsx:141-180</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXHIBIT 02 -->
+  <section class="exhibit reveal">
+    <div class="ex-head">
+      <span class="ex-no">EXHIBIT 02</span>
+      <h2>Deployment logs — detail</h2>
+      <span class="src">every block mirrored from <b>ApiLogDetailContent.tsx</b></span>
+    </div>
+    <div class="shot">
+      <div class="bar"><i></i><i></i><i></i><span>/deployment-logs/detail?id= · collapsible sections, error box, log pre</span></div>
+      <img src="img/deployment-logs-detail.png" alt="Generated deployment-logs detail screen: meta card, collapsible sections, red error message block, monospace deploy log">
+    </div>
+    <div class="ledger">
+      <div class="lh"><span>element</span><span>← its source in your code</span></div>
+      <div class="lscroll">
+      <table>
+        <thead><tr><th>Element</th><th>Reused pattern</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td class="el">Skeleton + back</td><td class="pat">page wrap · “목록으로” button</td><td class="src"><span class="ref">ApiLogDetailContent.tsx:167-173</span></td></tr>
+          <tr><td class="el">Meta card + grid</td><td class="pat">card · labelled meta grid</td><td class="src"><span class="ref">ApiLogDetailContent.tsx:178-237</span></td></tr>
+          <tr><td class="el">Collapsible section header</td><td class="pat">click to fold / unfold</td><td class="src"><span class="ref">ApiLogDetailContent.tsx:186,188</span></td></tr>
+          <tr><td class="el">Error message box</td><td class="pat">rose error block</td><td class="src"><span class="ref">ApiLogDetailContent.tsx:264-271</span></td></tr>
+          <tr><td class="el">Deploy-log pre box</td><td class="pat">monospace pre log</td><td class="src"><span class="ref">ApiLogDetailContent.tsx:285-293</span></td></tr>
+          <tr><td class="el">Status badge</td><td class="pat">shared badge, same variants</td><td class="src"><span class="ref">badge.tsx:6</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDIT MOVEMENT -->
+  <section class="turn reveal">
+    <span class="eyebrow">the other direction · audit</span>
+    <h2>It also grades what’s already there.</h2>
+    <p class="lead">Point the same evidence backwards and you get <code style="font-family:var(--mono);font-size:.9em;background:var(--accent-soft);padding:1px 6px;border-radius:5px">/mirror-design:audit</code> — it judges an existing screen against the census. No taste, only citations. Here is <b style="color:var(--ink)">server-management</b>, graded.</p>
+
+    <div class="verdict-row">
+      <span class="verdict fail">NOT PASSED — 1 Blocker</span>
+      <span class="note">judged, not fixed · a finding without a census citation is dropped</span>
+    </div>
+
+    <div class="shot">
+      <div class="bar"><i></i><i></i><i></i><span>server-management-audit.html · before ↔ census-correct, with DRIFT markers</span></div>
+      <img src="img/server-management-audit.png" alt="Audit of server-management: before/after panes with DRIFT badges, and a findings table scored by severity with file:line evidence on both sides">
+    </div>
+
+    <div class="ledger">
+      <div class="lh"><span>finding</span><span>severity · evidence both sides</span></div>
+      <div class="lscroll">
+      <table>
+        <thead><tr><th>Element</th><th>Drift found</th><th>Census standard</th><th>Sev.</th></tr></thead>
+        <tbody>
+          <tr><td class="el">Status badge</td><td class="pat">hand-rolled span, built-in emerald/rose</td><td class="src"><span class="ref">badge.tsx:13,15 · 15 files</span></td><td class="sevcol"><span class="sev blocker">Blocker</span></td></tr>
+          <tr><td class="el">Title color</td><td class="pat">text-neutral-900 — off the token scale</td><td class="src"><span class="ref">7 of 8 lists use neutral-700</span></td><td class="sevcol"><span class="sev should">Should-fix</span></td></tr>
+          <tr><td class="el">Detail entry</td><td class="pat">modal — 0 of 13 lists do this</td><td class="src"><span class="ref">panel swap / route push</span></td><td class="sevcol"><span class="sev should">Should-fix</span></td></tr>
+          <tr><td class="el">Row hover</td><td class="pat">neutral-50 — invisible on canvas</td><td class="src"><span class="ref">table.tsx default</span></td><td class="sevcol"><span class="sev note">Note</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <p class="ratified"><b>What it refused to flag:</b> sonner toast <span class="ok">✓</span> 23 files · delete-confirm AlertDialog <span class="ok">✓</span> 14 files · no-pagination <span class="ok">✓</span> ratified by the reviewer for this screen — recorded in the census, never raised again.</p>
+  </section>
+
+  <!-- GATES -->
+  <section class="gates reveal">
+    <h2>Why you can trust the screenshot</h2>
+    <p class="sub">Two hard gates run before a single pixel is drawn. They are the reason “0 invented” is a guarantee, not a slogan.</p>
+    <div class="gcards">
+      <div class="gcard">
+        <div class="t">completeness gate</div>
+        <h3>No source → not drawn</h3>
+        <p>Every element in the mockup must carry a <span style="font-family:var(--mono);font-size:.9em">file:line</span> in the mapping table. If a piece has no precedent in your codebase, mirror-design stops and asks — it never improvises one.</p>
+      </div>
+      <div class="gcard">
+        <div class="t">sibling-consistency gate</div>
+        <h3>Same role → same control</h3>
+        <p>Elements with the same job on one screen must use the same control. No radio-button filter sitting next to two chip filters just because they came from different reference screens.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="l">generated by <b>mirror·design</b> — your existing screens ARE the design system</div>
+    <a class="repo" href="https://github.com/kim-taehan/mirror-design">github.com/kim-taehan/mirror-design ↗</a>
+  </footer>
+
+</div>
+
+<script>
+  (function(){
+    if(!window.matchMedia || !window.IntersectionObserver) {
+      document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');}); return;
+    }
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');}); return;
+    }
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+    },{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(function(e){io.observe(e);});
+  })();
+</script>
